@@ -1,0 +1,13 @@
+.column {
+  display: flex;
+  flex-flow: column;
+  width: 300px;
+  padding: 80px 30px 10px;
+}
+
+.resource {
+  padding: 2px 0;
+  span {
+    color: white;
+  }
+}
