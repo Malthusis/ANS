@@ -9,4 +9,10 @@
 
 .game-container {
   display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+
+resources {
+  height: 100%
 }

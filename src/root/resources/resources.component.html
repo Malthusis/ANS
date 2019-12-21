@@ -1,6 +1,8 @@
 <div class="column">
-  <div class="resource"><span >Trash 1/1</span></div>
-  <div class="resource"><span>More Trash 1/1</span></div>
-  <div class="resource"><span>Again, Trash 1/1</span></div>
-  <div class="resource"><span>It's Trash 1/1</span></div>
+  <ng-container *ngIf="trashArray$ | async as resources">
+    <ng-container *ngFor="let resource of resources">
+      <div class="resource"><span class="{{resource.cssStyle}}">{{resource.name}} </span><span>{{resource.value}}
+        /{{resource.max}}</span></div>
+    </ng-container>
+  </ng-container>
 </div>

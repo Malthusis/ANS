@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Resource } from '../interface';
-import { ResourceService } from "./resource.service";
 import { Observable } from "rxjs";
+import { ResourceService } from "../resources/resource.service";
 
 @Component({
-  selector: 'resources',
-  templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.scss']
+  selector: 'bonfire',
+  templateUrl: './bonfire.component.html',
+  styleUrls: ['./bonfire.component.scss']
 })
-export class ResourcesComponent implements OnInit {
+export class BonfireComponent implements OnInit {
 
   constructor(
     private resourcesService: ResourceService
@@ -19,6 +19,10 @@ export class ResourcesComponent implements OnInit {
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;
 
+  }
+
+  doThing(): void {
+    console.log('Pressed!');
   }
 
 }

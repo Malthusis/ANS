@@ -1,0 +1,11 @@
+.column {
+  display: flex;
+  flex-flow: column;
+  width: 600px;
+  padding: 80px 10px 10px;
+  border-right-style: solid;
+  border-width: 3px;
+  border-color: lightgrey;
+  background-color: darkslategrey;
+  height: calc(100% - 90px);
+}
