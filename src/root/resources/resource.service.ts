@@ -4,7 +4,12 @@ import { withLatestFrom } from 'rxjs/operators';
 import { RootService } from '../root.service';
 import { Resource } from '../interface';
 
-export enum Trash {
+export enum TYPES {
+  TRASH = 'Trash',
+  REFINED = 'Refined Goods'
+}
+
+export enum TRASH {
   RUBBISH = 0,
   KINDLING = 1,
   SCRAP = 2,
@@ -13,18 +18,23 @@ export enum Trash {
   MEDICAL = 5
 }
 
+export enum REFINED {
+  PCHUNK = 0,
+}
+
 const TRASH_LENGTH = 6;
 
 @Injectable()
 export class ResourceService {
 
   private resourceGenTicks$: Observable<any>;
-  private resources$$: BehaviorSubject<Resource[]>;
+  private resources$$: BehaviorSubject<Map<string, Resource[]>>;
 
   constructor(
     private rootService: RootService
   ) {
-    this.resources$$ = new BehaviorSubject<Resource[]>([
+    const resources = new Map<string, Resource[]>();
+    resources.set(TYPES.TRASH, [
       {
         key: 'RUBBISH',
         name: 'Rubbish',
@@ -75,14 +85,27 @@ export class ResourceService {
         cssStyle: 'heat'
       }
     ] as Resource[]);
+    resources.set(TYPES.REFINED, [{
+    key: 'PCHUNK',
+    name: 'P. Chunk',
+    value: 0,
+    max: 50,
+    cssStyle: 'pChunk'
+    }] as Resource[]);
+    console.log(resources);
+
+    this.resources$$ = new BehaviorSubject<Map<string, Resource[]>>(resources);
+
+    console.log('test', this.resources$$.getValue());
 
     this.resourceGenTicks$ = this.rootService.resourceGenTick$;
 
     this.rootService.resourceGenTick$.pipe(
       withLatestFrom(this.resources$$.asObservable())
     ).subscribe(
-      ([_, trashArray]) => {
+      ([_, resourceMap]) => {
         // Gather Trash
+        const trashArray = resourceMap.get(TYPES.TRASH);
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
         if (trashArray[garbagePick].value < trashArray[garbagePick].max) {
           trashArray[garbagePick].value = trashArray[garbagePick].value + 1;
@@ -92,7 +115,7 @@ export class ResourceService {
     );
   }
 
-  get resources$(): Observable<Resource[]> {
+  get resources$(): Observable<Map<string, Resource[]>> {
     return this.resources$$.asObservable();
   }
 

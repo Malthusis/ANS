@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { RootComponent } from './root.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { RootService } from './root.service';
-import { ResourceService } from "./resources/resource.service";
+import { ResourceService } from './resources/resource.service';
 import { BonfireComponent } from './bonfire/bonfire.component';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule } from '@angular/material';
 
 
 @NgModule({
@@ -15,10 +15,11 @@ import { MatButtonModule } from '@angular/material';
     ResourcesComponent,
     BonfireComponent
   ],
-    imports: [
-        BrowserModule,
-        MatButtonModule
-    ],
+  imports: [
+    BrowserModule,
+    MatButtonModule,
+    MatDividerModule
+  ],
   providers: [RootService, ResourceService],
   bootstrap: [RootComponent]
 })
