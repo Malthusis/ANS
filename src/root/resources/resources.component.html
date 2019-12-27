@@ -2,7 +2,7 @@
   <ng-container *ngIf="trashArray$ | async as resources">
     <ng-container *ngFor="let resource of resources">
       <div class="resource"><span class="{{resource.cssStyle}}">{{resource.name}} </span><span>{{resource.value}}
-        /{{resource.max}}</span></div>
+        / {{resource.max}}</span></div>
     </ng-container>
   </ng-container>
 </div>

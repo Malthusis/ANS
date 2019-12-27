@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Resource } from '../interface';
-import { ResourceService } from "./resource.service";
-import { Observable } from "rxjs";
+import { ResourceService } from './resource.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'resources',
@@ -18,7 +18,6 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;
-
   }
 
 }
