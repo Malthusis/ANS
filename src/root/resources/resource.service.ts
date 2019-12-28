@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { withLatestFrom } from 'rxjs/operators';
+import { take, withLatestFrom } from 'rxjs/operators';
 import { RootService } from '../root.service';
 import { Resource } from '../interface';
 
@@ -107,10 +107,10 @@ export class ResourceService {
       withLatestFrom(this.resources$$.asObservable())
     ).subscribe(
       ([_, resourceMap]) => {
-        // Gather Trash
-        const trashArray = resourceMap.get(TYPES.TRASH);
-        const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        this.changeResource(1, trashArray[garbagePick]);
+        // // Gather Trash
+        // const trashArray = resourceMap.get(TYPES.TRASH);
+        // const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
+        // this.changeResource(1, trashArray[garbagePick]);
 
         // Heat Decay
         this.heatTick++;
@@ -127,6 +127,18 @@ export class ResourceService {
 
   get resources$(): Observable<Map<string, Resource[]>> {
     return this.resources$$.asObservable();
+  }
+
+  pickTrash(): void {
+    this.resources$.pipe(
+      take(1)
+    ).subscribe(resourceMap => {
+        // // Gather Trash
+        const trashArray = resourceMap.get(TYPES.TRASH);
+        const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
+        this.changeResource(1, trashArray[garbagePick]);
+      }
+    );
   }
 
   changeResource(value: number, resource: Resource): boolean {

@@ -10,3 +10,13 @@
   height: calc(100% - 90px);
 }
 
+.actions {
+  display: flex;
+  flex-flow: row;
+  margin: 5px 5px 5px 5px;
+  justify-content: center;
+  .action-button {
+    margin: 5px 10px;
+  }
+}
+

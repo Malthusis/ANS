@@ -33,6 +33,10 @@ export class BonfireComponent implements OnInit {
     );
   }
 
+  pickTrash(): void {
+    this.resourcesService.pickTrash();
+  }
+
   doThing(): void {
     console.log('Pressed!');
   }
