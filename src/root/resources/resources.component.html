@@ -1,12 +1,10 @@
-<div class="column">
-  <ng-container *ngIf="trashArray$ | async as resourceMap">
-    <ng-container *ngFor="let category of resourceMap | keyvalue">
-      {{category.key}}
-      <mat-divider></mat-divider>
-      <ng-container *ngFor="let resource of category.value">
-        <div class="resource"><span class="{{resource.cssStyle}}">{{resource.name}} </span><span>{{resource.value}}
-          / {{resource.max}}</span></div>
-      </ng-container>
+<ng-container *ngIf="trashArray$ | async as resourceMap">
+  <div class="category" *ngFor="let category of resourceMap | keyvalue">
+    <span class="heading">{{category.key}}</span>
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let resource of category.value">
+      <div class="resource"><span class="{{resource.cssStyle}}">{{resource.name}} </span><span>{{resource.value}}
+        / {{resource.max}}</span></div>
     </ng-container>
-  </ng-container>
-</div>
+  </div>
+</ng-container>

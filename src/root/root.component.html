@@ -1,12 +1,9 @@
 <body>
-<div class="background">
+<div class="background" [ngClass]="{'embers': (fire$ | async) > 10, 'no-fire': (fire$ | async) <= 10}">
   <div class="game-container">
-    <resources></resources>
-    <bonfire></bonfire>
-    <div>
-      <p>Hello World!</p>
-    </div>
+    <div class="resources"><resources></resources></div>
+    <div class="bonfire"><bonfire></bonfire></div>
+    <p style="color: white;">{{fire$ | async}}</p>
   </div>
 </div>
 </body>
-

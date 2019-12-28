@@ -1,13 +1,9 @@
-.column {
-  display: flex;
-  flex-flow: column;
-  width: 180px;
-  padding: 80px 10px 10px;
-  border-right-style: solid;
-  border-width: 3px;
-  border-color: lightgrey;
-  //background-color: dimgrey;
-  height: calc(100% - 90px);
+.heading {
+  color: #03A3FF;
+}
+
+.category {
+  margin-bottom: 10px;
 }
 
 .resource {

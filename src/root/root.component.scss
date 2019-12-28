@@ -1,10 +1,18 @@
 .background {
-  background: #333333;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  transition: background-color 0.5s ease;
+}
+
+.no-fire {
+  background: black;
+}
+
+.embers {
+  background: #333333;
 }
 
 .game-container {
@@ -15,4 +23,32 @@
 
 resources {
   height: 100%
+}
+
+.resources {
+    display: flex;
+    flex-flow: column;
+    width: 180px;
+    padding: 80px 10px 10px;
+    border-right-style: solid;
+    border-width: 3px;
+    border-color: lightgrey;
+    //background-color: dimgrey;
+    height: calc(100% - 90px);
+}
+
+bonfire {
+  height: 100%
+}
+
+.bonfire {
+    display: flex;
+    flex-flow: column;
+    //width: 600px;
+    padding: 80px 10px 10px;
+    //border-right-style: solid;
+    //border-width: 3px;
+    //border-color: lightgrey;
+    //background-color: darkslategrey;
+    height: calc(100% - 90px);
 }

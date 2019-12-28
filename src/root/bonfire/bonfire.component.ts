@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Resource } from '../interface';
-import { Observable } from "rxjs";
-import { ResourceService } from "../resources/resource.service";
+import { Observable, Subscriber, Subscription } from 'rxjs';
+import { ResourceService } from '../resources/resource.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'bonfire',
@@ -10,15 +11,26 @@ import { ResourceService } from "../resources/resource.service";
 })
 export class BonfireComponent implements OnInit {
 
+  // private subscriptions = Subscription[];
+
   constructor(
     private resourcesService: ResourceService
   ) {}
 
-  private trashArray$: Observable<Resource[]>;
+  private trashArray$: Observable<Map<string, Resource[]>>;
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;
 
+  }
+
+  kindleFire(): void {
+    this.trashArray$.pipe(
+      take(1)
+    ).subscribe( resources => {
+        this.resourcesService.changeResource(1, resources.get('')[0]);
+      }
+    );
   }
 
   doThing(): void {

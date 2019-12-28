@@ -6,7 +6,8 @@ import { Resource } from '../interface';
 
 export enum TYPES {
   TRASH = 'Trash',
-  REFINED = 'Refined Goods'
+  REFINED = 'Refined Goods',
+  BASIC = ''
 }
 
 export enum TRASH {
@@ -29,6 +30,8 @@ export class ResourceService {
 
   private resourceGenTicks$: Observable<any>;
   private resources$$: BehaviorSubject<Map<string, Resource[]>>;
+  private heatTick = 0;
+  private heatWatcher$$: BehaviorSubject<boolean>;
 
   constructor(
     private rootService: RootService
@@ -76,21 +79,21 @@ export class ResourceService {
         value: 0,
         max: 25,
         cssStyle: 'medical'
-      },
-      {
-        key: 'HEAT',
-        name: 'Heat',
-        value: 0,
-        max: 50,
-        cssStyle: 'heat'
       }
     ] as Resource[]);
     resources.set(TYPES.REFINED, [{
-    key: 'PCHUNK',
-    name: 'P. Chunk',
-    value: 0,
-    max: 50,
-    cssStyle: 'pChunk'
+      key: 'PCHUNK',
+      name: 'P. Chunk',
+      value: 0,
+      max: 50,
+      cssStyle: 'pChunk'
+    }] as Resource[]);
+    resources.set(TYPES.BASIC, [{
+      key: 'HEAT',
+      name: 'Heat',
+      value: 0,
+      max: 50,
+      cssStyle: 'heat'
     }] as Resource[]);
     console.log(resources);
 
@@ -107,9 +110,16 @@ export class ResourceService {
         // Gather Trash
         const trashArray = resourceMap.get(TYPES.TRASH);
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        if (trashArray[garbagePick].value < trashArray[garbagePick].max) {
-          trashArray[garbagePick].value = trashArray[garbagePick].value + 1;
+        this.changeResource(1, trashArray[garbagePick]);
+
+        // Heat Decay
+        this.heatTick++;
+        const statsArray = resourceMap.get(TYPES.BASIC);
+        if (this.heatTick >= 10) {
+          this.changeResource(-1, statsArray[0]);
+          this.heatTick = 0;
         }
+
         // console.log('Tick!');
       }
     );
@@ -117,6 +127,18 @@ export class ResourceService {
 
   get resources$(): Observable<Map<string, Resource[]>> {
     return this.resources$$.asObservable();
+  }
+
+  changeResource(value: number, resource: Resource): boolean {
+    if (value < 0) {
+      if (resource.value + value < 0) {
+        return false;
+      }
+      resource.value = resource.value + value;
+    } else {
+      resource.value + value > resource.max ? resource.value = resource.max : resource.value = resource.value + value;
+    }
+    return true;
   }
 
   private randomIntFromInterval(min, max) {
