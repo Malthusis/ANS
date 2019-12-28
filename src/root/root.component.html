@@ -1,9 +1,15 @@
 <body>
-<div class="background" [ngClass]="{'embers': (fire$ | async) > 10, 'no-fire': (fire$ | async) <= 10}">
-  <div class="game-container">
-    <div class="resources"><resources></resources></div>
-    <div class="bonfire"><bonfire></bonfire></div>
-    <p style="color: white;">{{fire$ | async}}</p>
+<ng-container *ngIf="trashArray$ | async as resourceMap">
+  <div class="background" [ngClass]="{'embers': resourceMap.get('')[0].value > 10, 'no-fire': resourceMap.get('')[0].value <= 10}">
+    <div class="game-container">
+      <div class="resources">
+        <resources></resources>
+      </div>
+      <div class="bonfire">
+        <bonfire></bonfire>
+      </div>
+        <p style="color: white;">{{resourceMap.get('')[0].value}}</p>
+    </div>
   </div>
-</div>
+</ng-container>
 </body>
