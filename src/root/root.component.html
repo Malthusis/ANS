@@ -1,6 +1,6 @@
 <body>
 <ng-container *ngIf="trashArray$ | async as resourceMap">
-  <div class="background" [ngClass]="{'embers': resourceMap.get('')[0].value > 10, 'no-fire': resourceMap.get('')[0].value <= 10}">
+  <div class="background" [ngClass]="{'fire-1': resourceMap.get('')[0].value > 10, 'no-fire': resourceMap.get('')[0].value <= 10}">
     <div class="game-container">
       <div class="resources">
         <resources></resources>
