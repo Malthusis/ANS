@@ -14,7 +14,7 @@ export class ResourcesComponent implements OnInit {
     private resourcesService: ResourceService
   ) {}
 
-  private trashArray$: Observable<Map<string, Resource[]>>;
+  trashArray$: Observable<Map<string, Resource[]>>;
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;

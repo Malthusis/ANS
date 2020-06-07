@@ -12,6 +12,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RootComponent implements OnInit {
 
+  private fire$: Observable<number>;
+  trashArray$: Observable<Map<string, Resource[]>>;
+
   constructor(
     private resourcesService: ResourceService,
     private translateService: TranslateService
@@ -21,8 +24,6 @@ export class RootComponent implements OnInit {
     translateService.use('en');
   }
 
-  private fire$: Observable<number>;
-  private trashArray$: Observable<Map<string, Resource[]>>;
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;
