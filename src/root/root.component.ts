@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ResourceService, TYPES } from './resources/resource.service';
 import { Observable } from 'rxjs';
 import { Resource } from './interface';
-import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,18 @@ import { map } from 'rxjs/operators';
 })
 export class RootComponent implements OnInit {
 
-  constructor(
-    private resourcesService: ResourceService
-  ) {}
-
   private fire$: Observable<number>;
-  private trashArray$: Observable<Map<string, Resource[]>>;
+  trashArray$: Observable<Map<string, Resource[]>>;
+
+  constructor(
+    private resourcesService: ResourceService,
+    private translateService: TranslateService
+  ) {
+    // Set default language and force to English for now.
+    translateService.setDefaultLang('en');
+    translateService.use('en');
+  }
+
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;

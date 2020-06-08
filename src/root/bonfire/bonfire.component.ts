@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Resource } from '../interface';
-import { Observable, Subscriber, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ResourceService } from '../resources/resource.service';
 import { take } from 'rxjs/operators';
+
 
 @Component({
   selector: 'bonfire',

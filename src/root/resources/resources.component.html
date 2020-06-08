@@ -3,7 +3,7 @@
     <span class="heading">{{category.key}}</span>
     <mat-divider></mat-divider>
     <ng-container *ngFor="let resource of category.value">
-      <div class="resource"><span class="{{resource.cssStyle}}">{{resource.name}} </span><span>{{resource.value}}
+      <div class="resource"><span class="{{resource.cssStyle}}">{{'RESOURCES.' + resource.key | translate}} </span><span>{{resource.value}}
         / {{resource.max}}</span></div>
     </ng-container>
   </div>

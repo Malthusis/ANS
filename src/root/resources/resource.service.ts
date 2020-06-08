@@ -40,42 +40,36 @@ export class ResourceService {
     resources.set(TYPES.TRASH, [
       {
         key: 'RUBBISH',
-        name: 'Rubbish',
         value: 0,
         max: 25,
         cssStyle: 'rubbish'
       },
       {
         key: 'KINDLING',
-        name: 'Kindling',
         value: 0,
         max: 25,
         cssStyle: 'kindling'
       },
       {
         key: 'SCRAP',
-        name: 'Scrap',
         value: 0,
         max: 25,
         cssStyle: 'scrap'
       },
       {
         key: 'PLASTIC',
-        name: 'Plastic',
         value: 0,
         max: 25,
         cssStyle: 'plastic'
       },
       {
         key: 'ELECTRONIC',
-        name: 'Electronic',
         value: 0,
         max: 25,
         cssStyle: 'electronic'
       },
       {
         key: 'MEDICAL',
-        name: 'Medical',
         value: 0,
         max: 25,
         cssStyle: 'medical'
@@ -83,14 +77,12 @@ export class ResourceService {
     ] as Resource[]);
     resources.set(TYPES.REFINED, [{
       key: 'PCHUNK',
-      name: 'P. Chunk',
       value: 0,
       max: 50,
       cssStyle: 'pChunk'
     }] as Resource[]);
     resources.set(TYPES.BASIC, [{
       key: 'HEAT',
-      name: 'Heat',
       value: 0,
       max: 50,
       cssStyle: 'heat'
@@ -107,10 +99,10 @@ export class ResourceService {
       withLatestFrom(this.resources$$.asObservable())
     ).subscribe(
       ([_, resourceMap]) => {
-        // // Gather Trash
-        // const trashArray = resourceMap.get(TYPES.TRASH);
-        // const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        // this.changeResource(1, trashArray[garbagePick]);
+        // Gather Trash
+        const trashArray = resourceMap.get(TYPES.TRASH);
+        const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
+        this.changeResource(1, trashArray[garbagePick]);
 
         // Heat Decay
         this.heatTick++;

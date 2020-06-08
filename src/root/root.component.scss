@@ -39,11 +39,15 @@ resources {
     width: 180px;
     min-width: 180px;
     padding: 80px 10px 10px;
-    border-right-style: solid;
-    border-width: 3px;
-    border-color: #ffc107;
+    //border-right-style: solid;
+    //border-width: 3px;
+    //border-color: #ffc107;
     background-color: black;
     height: calc(100% - 90px);
+}
+
+border {
+  height: 100%;
 }
 
 bonfire {
@@ -54,11 +58,7 @@ bonfire {
 .bonfire {
     display: flex;
     flex-flow: column;
-    //width: 600px;
     padding: 80px 10px 10px;
-    //border-right-style: solid;
-    //border-width: 3px;
-    //border-color: #ffc107;
     width: 100vw;
     min-width: 400px;
     height: calc(100% - 90px);
