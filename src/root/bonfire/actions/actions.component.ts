@@ -17,7 +17,7 @@ export class ActionsComponent implements OnInit {
     private gameFlagsService: GameFlagsService
   ) {}
 
-  private resources$: Observable<Map<string, Map<string, Resource>>>;
+  resources$: Observable<Map<string, Map<string, Resource>>>;
   gameProgress$: Observable<number>;
 
   ngOnInit(): void {
