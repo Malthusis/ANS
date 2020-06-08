@@ -42,50 +42,58 @@ export class ResourceService {
         key: 'RUBBISH',
         value: 0,
         max: 25,
-        cssStyle: 'rubbish'
+        cssStyle: 'rubbish',
+        unlockedDefault: true
       },
       {
         key: 'KINDLING',
         value: 0,
         max: 25,
-        cssStyle: 'kindling'
+        cssStyle: 'kindling',
+        unlockedDefault: true
       },
       {
         key: 'SCRAP',
         value: 0,
         max: 25,
-        cssStyle: 'scrap'
+        cssStyle: 'scrap',
+        unlockedDefault: true
       },
       {
         key: 'PLASTIC',
         value: 0,
         max: 25,
-        cssStyle: 'plastic'
+        cssStyle: 'plastic',
+        unlockedDefault: true
       },
       {
         key: 'ELECTRONIC',
         value: 0,
         max: 25,
-        cssStyle: 'electronic'
+        cssStyle: 'electronic',
+        unlockedDefault: true
       },
       {
         key: 'MEDICAL',
         value: 0,
         max: 25,
-        cssStyle: 'medical'
+        cssStyle: 'medical',
+        unlockedDefault: true
       }
     ] as Resource[]);
     resources.set(TYPES.REFINED, [{
       key: 'PCHUNK',
       value: 0,
       max: 50,
-      cssStyle: 'pChunk'
+      cssStyle: 'pChunk',
+      unlockedDefault: false
     }] as Resource[]);
     resources.set(TYPES.BASIC, [{
       key: 'HEAT',
       value: 0,
       max: 50,
-      cssStyle: 'heat'
+      cssStyle: 'heat',
+      unlockedDefault: true
     }] as Resource[]);
     console.log(resources);
 
@@ -125,7 +133,7 @@ export class ResourceService {
     this.resources$.pipe(
       take(1)
     ).subscribe(resourceMap => {
-        // // Gather Trash
+        // Gather Trash
         const trashArray = resourceMap.get(TYPES.TRASH);
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
         this.changeResource(1, trashArray[garbagePick]);

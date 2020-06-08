@@ -13,6 +13,7 @@ import { BorderComponent } from './border/border.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ActionsComponent } from './bonfire/actions/actions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GameFlagsService } from './game-flags/game-flags.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -41,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatTabsModule
   ],
-  providers: [RootService, ResourceService],
+  providers: [RootService, ResourceService, GameFlagsService],
   bootstrap: [RootComponent]
 })
 export class RootModule { }

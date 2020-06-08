@@ -2,12 +2,15 @@
   <mat-tab-group animationDuration="0ms">
     <mat-tab label="Actions">
       <div class="tab-container actions">
-            <div class="action-button">
-              <button mat-stroked-button color="primary" (click)="kindleFire()">Kindle Fire</button>
-            </div>
-            <div class="action-button">
-              <button mat-stroked-button (click)="pickTrash()">Pick Trash</button>
-            </div>
+        <div class="action-button">
+          <button mat-stroked-button color="primary" (click)="kindleFire()">Kindle Fire</button>
+        </div>
+
+        <ng-container *ngIf="(gameProgress$ | async) > 1">
+          <div class="action-button">
+            <button mat-stroked-button (click)="pickTrash()">Pick Trash</button>
+          </div>
+        </ng-container>
       </div>
     </mat-tab>
     <mat-tab label="Refine">
