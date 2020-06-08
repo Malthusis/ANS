@@ -17,20 +17,20 @@ export class ActionsComponent implements OnInit {
     private gameFlagsService: GameFlagsService
   ) {}
 
-  private trashArray$: Observable<Map<string, Resource[]>>;
+  private resources$: Observable<Map<string, Map<string, Resource>>>;
   gameProgress$: Observable<number>;
 
   ngOnInit(): void {
-    this.trashArray$ = this.resourcesService.resources$;
+    this.resources$ = this.resourcesService.resources$;
     this.gameProgress$ = this.gameFlagsService.initialStage$;
 
   }
 
   kindleFire(): void {
-    this.trashArray$.pipe(
+    this.resources$.pipe(
       take(1)
     ).subscribe( resources => {
-        this.resourcesService.changeResource(1, resources.get('')[0]);
+        this.resourcesService.changeResource(1, resources.get('').get('HEAT'));
       }
     );
   }

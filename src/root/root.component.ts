@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class RootComponent implements OnInit {
 
   private fire$: Observable<number>;
-  trashArray$: Observable<Map<string, Resource[]>>;
+  trashArray$: Observable<Map<string, Map<string, Resource>>>;
 
   constructor(
     private resourcesService: ResourceService,
@@ -27,17 +27,17 @@ export class RootComponent implements OnInit {
 
   ngOnInit(): void {
     this.trashArray$ = this.resourcesService.resources$;
-    // this.fire$ = this.trashArray$.pipe(
-    //   map(resources => {
-    //     // const fire = resources.get('')[0].value;
-    //     // if (fire > 10) {
-    //     //   console.log('embers!');
-    //     //   return 'embers';
-    //     // }
-    //     // return 'no-fire';
-    //     console.log(resources.get(TYPES.BASIC));
-    //     return resources.get(TYPES.BASIC)[0].value;
-    //   })
-    // );
+  //   this.fire$ = this.trashArray$.pipe(
+  //     map(resources => {
+  //       const fire = resources.get(TYPES.BASIC).get('HEAT').value;
+  //       if (fire > 10) {
+  //         console.log('embers!');
+  //         return 'embers';
+  //       }
+  //       return 'no-fire';
+  //       console.log(resources.get(TYPES.BASIC));
+  //       // return resources.get(TYPES.BASIC).get('HEAT').value;
+  //     })
+  //   );
   }
 }

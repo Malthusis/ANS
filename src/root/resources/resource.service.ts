@@ -29,77 +29,89 @@ const TRASH_LENGTH = 6;
 export class ResourceService {
 
   private resourceGenTicks$: Observable<any>;
-  private resources$$: BehaviorSubject<Map<string, Resource[]>>;
+  private resources$$: BehaviorSubject<Map<string, Map<string, Resource>>>;
   private heatTick = 0;
   private heatWatcher$$: BehaviorSubject<boolean>;
 
   constructor(
     private rootService: RootService
   ) {
-    const resources = new Map<string, Resource[]>();
-    resources.set(TYPES.TRASH, [
-      {
-        key: 'RUBBISH',
-        value: 0,
-        max: 25,
-        cssStyle: 'rubbish',
-        unlockedDefault: true
-      },
-      {
-        key: 'KINDLING',
-        value: 0,
-        max: 25,
-        cssStyle: 'kindling',
-        unlockedDefault: true
-      },
-      {
-        key: 'SCRAP',
-        value: 0,
-        max: 25,
-        cssStyle: 'scrap',
-        unlockedDefault: true
-      },
-      {
-        key: 'PLASTIC',
-        value: 0,
-        max: 25,
-        cssStyle: 'plastic',
-        unlockedDefault: true
-      },
-      {
-        key: 'ELECTRONIC',
-        value: 0,
-        max: 25,
-        cssStyle: 'electronic',
-        unlockedDefault: true
-      },
-      {
-        key: 'MEDICAL',
-        value: 0,
-        max: 25,
-        cssStyle: 'medical',
-        unlockedDefault: true
-      }
-    ] as Resource[]);
-    resources.set(TYPES.REFINED, [{
-      key: 'PCHUNK',
-      value: 0,
-      max: 50,
-      cssStyle: 'pChunk',
-      unlockedDefault: false
-    }] as Resource[]);
-    resources.set(TYPES.BASIC, [{
+    const resources = new Map<string, Map<string, Resource>>();
+    const basic = new Map<string, Resource>();
+    const trash = new Map<string, Resource>();
+    const refined = new Map<string, Resource>();
+    basic.set('HEAT', {
       key: 'HEAT',
       value: 0,
       max: 50,
       cssStyle: 'heat',
       unlockedDefault: true
-    }] as Resource[]);
-    console.log(resources);
+    });
 
-    this.resources$$ = new BehaviorSubject<Map<string, Resource[]>>(resources);
+    trash.set('RUBBISH', {
+      key: 'RUBBISH',
+      value: 0,
+      max: 25,
+      cssStyle: 'rubbish',
+      unlockedDefault: true
+    });
+    trash.set('KINDLING', {
+      key: 'KINDLING',
+      value: 0,
+      max: 25,
+      cssStyle: 'kindling',
+      unlockedDefault: true
+    });
+    trash.set('PLASTIC', {
+      key: 'PLASTIC',
+      value: 0,
+      max: 25,
+      cssStyle: 'plastic',
+      unlockedDefault: true
+    });
+    trash.set('SCRAP', {
+      key: 'SCRAP',
+      value: 0,
+      max: 25,
+      cssStyle: 'scrap',
+      unlockedDefault: true
+    });
+    trash.set('PLASTIC', {
+      key: 'PLASTIC',
+      value: 0,
+      max: 25,
+      cssStyle: 'plastic',
+      unlockedDefault: true
+    });
+    trash.set('ELECTRONIC', {
+      key: 'ELECTRONIC',
+      value: 0,
+      max: 25,
+      cssStyle: 'electronic',
+      unlockedDefault: true
+    });
+    trash.set('MEDICAL', {
+      key: 'MEDICAL',
+      value: 0,
+      max: 25,
+      cssStyle: 'medical',
+      unlockedDefault: true
+    });
 
-    console.log('test', this.resources$$.getValue());
+    refined.set('PCHUNK', {
+      key: 'PCHUNK',
+      value: 0,
+      max: 50,
+      cssStyle: 'pChunk',
+      unlockedDefault: false
+    });
+
+
+    resources.set(TYPES.TRASH, trash);
+    resources.set(TYPES.REFINED, refined);
+    resources.set(TYPES.BASIC, basic);
+
+    this.resources$$ = new BehaviorSubject<Map<string, Map<string, Resource>>>(resources);
 
     this.resourceGenTicks$ = this.rootService.resourceGenTick$;
 
@@ -107,28 +119,28 @@ export class ResourceService {
       withLatestFrom(this.resources$$.asObservable())
     ).subscribe(
       ([_, resourceMap]) => {
+        // TODO: FIX
         // Gather Trash
         const trashArray = resourceMap.get(TYPES.TRASH);
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        this.changeResource(1, trashArray[garbagePick]);
+        // this.changeResource(1, trashArray.get(garbagePick));
 
         // Heat Decay
         this.heatTick++;
         const statsArray = resourceMap.get(TYPES.BASIC);
         if (this.heatTick >= 10) {
-          this.changeResource(-1, statsArray[0]);
+          this.changeResource(-1, statsArray.get('HEAT'));
           this.heatTick = 0;
         }
-
-        // console.log('Tick!');
       }
     );
   }
 
-  get resources$(): Observable<Map<string, Resource[]>> {
+  get resources$(): Observable<Map<string, Map<string, Resource>>> {
     return this.resources$$.asObservable();
   }
 
+  // TODO: FIX
   pickTrash(): void {
     this.resources$.pipe(
       take(1)
@@ -136,7 +148,7 @@ export class ResourceService {
         // Gather Trash
         const trashArray = resourceMap.get(TYPES.TRASH);
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        this.changeResource(1, trashArray[garbagePick]);
+        // this.changeResource(1, trashArray[garbagePick]);
       }
     );
   }

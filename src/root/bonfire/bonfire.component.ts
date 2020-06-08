@@ -21,18 +21,18 @@ export class BonfireComponent implements OnInit {
   private trashArray$: Observable<Map<string, Resource[]>>;
 
   ngOnInit(): void {
-    this.trashArray$ = this.resourcesService.resources$;
+    // this.trashArray$ = this.resourcesService.resources$;
 
   }
 
-  kindleFire(): void {
-    this.trashArray$.pipe(
-      take(1)
-    ).subscribe( resources => {
-        this.resourcesService.changeResource(1, resources.get('')[0]);
-      }
-    );
-  }
+  // kindleFire(): void {
+  //   this.trashArray$.pipe(
+  //     take(1)
+  //   ).subscribe( resources => {
+  //       this.resourcesService.changeResource(1, resources.get('')[0]);
+  //     }
+  //   );
+  // }
 
   pickTrash(): void {
     this.resourcesService.pickTrash();

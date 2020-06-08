@@ -14,10 +14,10 @@ export class ResourcesComponent implements OnInit {
     private resourcesService: ResourceService
   ) {}
 
-  trashArray$: Observable<Map<string, Resource[]>>;
+  resources$: Observable<Map<string, Map<string, Resource>>>;
 
   ngOnInit(): void {
-    this.trashArray$ = this.resourcesService.resources$;
+    this.resources$ = this.resourcesService.resources$;
   }
 
 }
