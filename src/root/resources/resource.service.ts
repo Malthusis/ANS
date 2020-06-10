@@ -140,15 +140,15 @@ export class ResourceService {
     return this.resources$$.asObservable();
   }
 
-  // TODO: FIX
   pickTrash(): void {
     this.resources$.pipe(
       take(1)
     ).subscribe(resourceMap => {
         // Gather Trash
-        const trashArray = resourceMap.get(TYPES.TRASH);
+        const resources = resourceMap.get(TYPES.TRASH);
+        const trashArray = Array.from(resources.keys());
         const garbagePick = this.randomIntFromInterval(0, TRASH_LENGTH - 1);
-        // this.changeResource(1, trashArray[garbagePick]);
+        this.changeResource(1, resources.get(trashArray[garbagePick]));
       }
     );
   }

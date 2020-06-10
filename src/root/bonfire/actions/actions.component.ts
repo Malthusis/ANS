@@ -35,6 +35,10 @@ export class ActionsComponent implements OnInit {
     );
   }
 
+  warmByFire(): void {
+    this.gameFlagsService.advanceToStage1();
+  }
+
   pickTrash(): void {
     this.resourcesService.pickTrash();
   }

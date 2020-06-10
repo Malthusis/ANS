@@ -8,15 +8,20 @@
             <button mat-stroked-button color="primary" (click)="kindleFire()">Kindle Fire</button>
           </div>
           <ng-container *ngIf="gameProgress$ | async as gameProgress">
-            <ng-container *ngIf="gameProgress === 1 && resourceMap.get('').get('HEAT').value > 25">
+            <ng-container *ngIf="gameProgress === 1">
               <div class="action-button">
-                <button mat-stroked-button>Warm Up</button>
+                <ng-container *ngIf="resourceMap.get('').get('HEAT').value >= 25 else disabled1">
+                  <button mat-stroked-button color="primary" (click)="warmByFire()" >Warm Up</button>
+                </ng-container>
+                <ng-template #disabled1>
+                  <button mat-stroked-button>Warm Up</button>
+                </ng-template>
               </div>
             </ng-container>
 
             <ng-container *ngIf="gameProgress > 1">
               <div class="action-button">
-                <button mat-stroked-button (click)="pickTrash()">Pick Trash</button>
+                <button mat-stroked-button color="primary" (click)="pickTrash()">Pick Trash</button>
               </div>
             </ng-container>
 
