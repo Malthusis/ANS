@@ -14,6 +14,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ActionsComponent } from './bonfire/actions/actions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameFlagsService } from './game-flags/game-flags.service';
+import { LoggerComponent } from './logger/logger.component';
+import { LoggerService } from './logger/logger.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -25,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResourcesComponent,
     BonfireComponent,
     BorderComponent,
-    ActionsComponent
+    ActionsComponent,
+    LoggerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MatTabsModule
   ],
-  providers: [RootService, ResourceService, GameFlagsService],
+  providers: [RootService, ResourceService, GameFlagsService, LoggerService],
   bootstrap: [RootComponent]
 })
 export class RootModule { }

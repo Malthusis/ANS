@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceService } from "../resources/resource.service";
+import { ResourceService } from '../resources/resource.service';
 
 @Component({
   selector: 'border',
