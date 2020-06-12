@@ -17,7 +17,8 @@ export class LoggerComponent implements OnInit {
 
   ngOnInit(): void {
     this.logQueue$ = this.loggerService.logConsole$;
-    this.loggerService.addMessage('Test!');
+    this.loggerService.addMessage(
+      'Bacon ipsum dolor amet ground round salami tenderloin buffalo shankle doner chicken pork belly cupim turkey landjaeger. Venison chislic pork belly cupim. Filet mignon short ribs meatball bacon prosciutto bresaola. Burgdoggen alcatra beef landjaeger, kielbasa fatback tongue venison sirloin turducken short ribs pancetta.');
   }
 
 }
