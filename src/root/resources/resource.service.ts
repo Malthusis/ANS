@@ -165,6 +165,32 @@ export class ResourceService {
     return true;
   }
 
+  // TODO: Improve this later so we don't have to save all these unnecessary fields.
+  save(): string {
+    const resources = this.resources$$.getValue();
+    console.log(resources);
+    const iter = resources.keys();
+    const jsonArray = [];
+    for (const i of iter) {
+      jsonArray.push([i, [...resources.get(i)]]);
+    }
+    return JSON.stringify(jsonArray);
+  }
+
+  load(save: string): void {
+    const resources = JSON.parse(save);
+    const resourcesMap = new Map<string, Map<string, Resource>>();
+    for (const category of resources) {
+      const categoryMap = new Map<string, Resource>();
+      for (const resource of category[1]) {
+        categoryMap.set(resource[0], resource[1] as Resource);
+      }
+      resourcesMap.set(category[0], categoryMap);
+    }
+
+    this.resources$$.next(resourcesMap);
+  }
+
   private randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }

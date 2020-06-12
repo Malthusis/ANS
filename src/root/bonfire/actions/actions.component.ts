@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Resource } from '../../interface';
 import { take } from 'rxjs/operators';
 import { GameFlagsService } from '../../game-flags/game-flags.service';
+import { LoggerService } from '../../logger/logger.service';
 
 @Component({
   selector: 'actions',
@@ -14,7 +15,8 @@ export class ActionsComponent implements OnInit {
 
   constructor(
     private resourcesService: ResourceService,
-    private gameFlagsService: GameFlagsService
+    private gameFlagsService: GameFlagsService,
+    private loggerService: LoggerService
   ) {}
 
   resources$: Observable<Map<string, Map<string, Resource>>>;
@@ -41,5 +43,16 @@ export class ActionsComponent implements OnInit {
 
   pickTrash(): void {
     this.resourcesService.pickTrash();
+  }
+
+  save(): void {
+    const savestring = this.resourcesService.save();
+    localStorage.setItem('save', savestring);
+    this.loggerService.addMessage('Save successful!');
+  }
+
+  load(): void {
+    this.resourcesService.load(localStorage.getItem('save'));
+    this.loggerService.addMessage('Load successful!');
   }
 }
