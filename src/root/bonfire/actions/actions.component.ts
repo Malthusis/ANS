@@ -46,13 +46,21 @@ export class ActionsComponent implements OnInit {
   }
 
   save(): void {
-    const savestring = this.resourcesService.save();
-    localStorage.setItem('save', savestring);
+    const resourcesJSON = this.resourcesService.save();
+    const flagsJSON = this.gameFlagsService.save();
+    const saveString = [['resources', resourcesJSON], ['flags', flagsJSON]];
+
+    localStorage.setItem('save', JSON.stringify(saveString));
     this.loggerService.addMessage('Save successful!');
   }
 
   load(): void {
-    this.resourcesService.load(localStorage.getItem('save'));
+    const loadString = JSON.parse(localStorage.getItem('save'));
+    const resources = loadString[0][1];
+    const flags = loadString[1][1];
+
+    this.resourcesService.load(resources);
+    this.gameFlagsService.load(flags);
     this.loggerService.addMessage('Load successful!');
   }
 }

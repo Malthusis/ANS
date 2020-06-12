@@ -20,4 +20,12 @@ export class GameFlagsService {
   advanceToStage1(): void {
     this.initialStage$$.next(2);
   }
+
+  save(): any[] {
+    return [this.initialStage$$.getValue()];
+  }
+
+  load(saved: any[]): void {
+    this.initialStage$$.next(saved[0]);
+  }
 }

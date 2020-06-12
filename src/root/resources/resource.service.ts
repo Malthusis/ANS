@@ -166,7 +166,7 @@ export class ResourceService {
   }
 
   // TODO: Improve this later so we don't have to save all these unnecessary fields.
-  save(): string {
+  save(): any[] {
     const resources = this.resources$$.getValue();
     console.log(resources);
     const iter = resources.keys();
@@ -174,11 +174,10 @@ export class ResourceService {
     for (const i of iter) {
       jsonArray.push([i, [...resources.get(i)]]);
     }
-    return JSON.stringify(jsonArray);
+    return jsonArray;
   }
 
-  load(save: string): void {
-    const resources = JSON.parse(save);
+  load(resources: any[]): void {
     const resourcesMap = new Map<string, Map<string, Resource>>();
     for (const category of resources) {
       const categoryMap = new Map<string, Resource>();
