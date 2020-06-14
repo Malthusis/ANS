@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ResourceService } from '../resources/resource.service';
 
 
 
@@ -9,7 +10,7 @@ export class GameFlagsService {
 
   private initialStage$$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
-  constructor() {
+  constructor(private resourcesService: ResourceService) {
   }
 
   get initialStage$(): Observable<number> {
@@ -18,6 +19,7 @@ export class GameFlagsService {
 
   // warm self by fire
   advanceToStage1(): void {
+    this.resourcesService.advanceToStage2();
     this.initialStage$$.next(2);
   }
 

@@ -3,10 +3,11 @@
     "PLASTIC": "Plastic",
     "RUBBISH": "Rubbish",
     "KINDLING": "Kindling",
-    "SCRAP": "Scrap",
+    "METAL": "Metal",
     "ELECTRONIC": "Electronic",
     "MEDICAL": "Medical",
     "HEAT": "Heat",
-    "PCHUNK": "P.Chunk"
+    "PCHUNK": "P.Chunk",
+    "SCRAP": "Scrap"
   }
 }
