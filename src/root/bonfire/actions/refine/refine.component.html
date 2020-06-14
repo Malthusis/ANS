@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="column-1">
+    <ul class="vertical-menu">
+      <li (click)="viewMode ='tab1'" [ngClass]="{'active':viewMode =='tab1'}">Electronic</li>
+      <li (click)="viewMode ='tab2'" [ngClass]="{'active':viewMode =='tab2'}">Kindling</li>
+      <li (click)="viewMode ='tab3'" [ngClass]="{'active':viewMode =='tab3'}">Medical</li>
+      <li (click)="viewMode ='tab4'" [ngClass]="{'active':viewMode =='tab4'}">Metal</li>
+      <li (click)="viewMode ='tab5'" [ngClass]="{'active':viewMode =='tab5'}">Plastic</li>
+    </ul>
+  </div>
+  <div class="column-2" [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'tab1'">
+      <h2>Tabs 1</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
+        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
+        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    </div>
+    <div *ngSwitchCase="'tab2'">
+      <h2>Tabs 2</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
+        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
+        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    </div>
+    <div *ngSwitchCase="'tab3'">
+      <h2>Tabs 3</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
+        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
+        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    </div>
+    <div *ngSwitchCase="'tab4'">
+      <h2>Tabs 4</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
+        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
+        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    </div>
+    <div *ngSwitchCase="'tab5'">
+      <h2>Tabs 5</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
+        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
+        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GameFlagsService } from './game-flags/game-flags.service';
 import { LoggerComponent } from './logger/logger.component';
 import { LoggerService } from './logger/logger.service';
+import { RefineComponent } from './bonfire/actions/refine/refine.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BonfireComponent,
     BorderComponent,
     ActionsComponent,
-    LoggerComponent
+    LoggerComponent,
+    RefineComponent
   ],
   imports: [
     BrowserModule,

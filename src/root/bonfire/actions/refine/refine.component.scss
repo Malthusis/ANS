@@ -1,0 +1,49 @@
+.main{
+  width: 100%;
+  display: flex;
+  font-family: 'EB Garamond', serif;
+
+  .column-1{
+    width: 20%;
+    float: left;
+  }
+  .column-2{
+    width: 80%;
+    float: left;
+    background-image: radial-gradient(rgba(183, 65, 14, .3) ,rgba(183, 65, 14, .0));
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    div{
+      padding: 20px;
+    }
+  }
+}
+.active{
+  outline: 2px solid #ddd;
+  cursor: pointer;
+  color: #ffc107;
+
+}
+.vertical-menu {
+
+  display: block !important;
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  color: #2980b9;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+li:after {
+  display: none;
+}
