@@ -17,6 +17,9 @@ import { GameFlagsService } from './game-flags/game-flags.service';
 import { LoggerComponent } from './logger/logger.component';
 import { LoggerService } from './logger/logger.service';
 import { RefineComponent } from './bonfire/actions/refine/refine.component';
+import { TooltipDirective } from './tooltip/tooltip.directive';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -30,7 +33,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     BorderComponent,
     ActionsComponent,
     LoggerComponent,
-    RefineComponent
+    RefineComponent,
+    TooltipDirective,
+    TooltipComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatDividerModule,
     HttpClientModule,
+    OverlayModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
