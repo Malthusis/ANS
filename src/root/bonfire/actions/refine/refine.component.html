@@ -8,36 +8,56 @@
       <li (click)="viewMode ='tab5'" [ngClass]="{'active':viewMode =='tab5'}">Plastic</li>
     </ul>
   </div>
-  <div class="column-2" [ngSwitch]="viewMode">
-    <div *ngSwitchCase="'tab1'">
-      <h2>Tabs 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
-        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
-        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+  <ng-container [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'tab1'" class="column-2">
+      <span class="description">Electronic Description here!</span>
+      <div class="actions">
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Action 1</button>
+        </div>
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Action 2</button>
+        </div>
+      </div>
     </div>
-    <div *ngSwitchCase="'tab2'">
-      <h2>Tabs 2</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
-        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
-        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    <div *ngSwitchCase="'tab2'" class="column-2">
+      <span class="description">Pieces of paper, torn scraps of fabric, and soft bits of things.<br>
+        These would probably all burn well in the fire...</span>
+      <div class="actions">
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Action 1</button>
+        </div>
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Action 2</button>
+        </div>
+      </div>
     </div>
-    <div *ngSwitchCase="'tab3'">
-      <h2>Tabs 3</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
-        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
-        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    <div *ngSwitchCase="'tab3'" class="column-2">
+      <span class="description">Unlabelled pill bottles, mysterious powders, and colored vials...<br>
+        You have no idea what any of these are, or how long they've been here.</span>
+      <div class="actions">
+        <div class="action-button">
+          <button mat-stroked-button color="primary">...bottoms up.</button>
+        </div>
+      </div>
     </div>
-    <div *ngSwitchCase="'tab4'">
-      <h2>Tabs 4</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
-        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
-        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    <div *ngSwitchCase="'tab4'" class="column-2 metal">
+      <span class="description">Sharp and pointy bits of metal covered with rust that glint in the fire.<br>
+        Currently of little use.</span>
+      <div class="actions">
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Smelt</button>
+        </div>
+      </div>
     </div>
-    <div *ngSwitchCase="'tab5'">
-      <h2>Tabs 5</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis fugiat velit saepe
-        repudiandae obcaecati! Hic dicta harum autem odio amet dignissimos doloribus, quae,
-        reprehenderit ratione, ea nulla molestias repellat ut!</p>
+    <div *ngSwitchCase="'tab5'" class="column-2">
+      <span class="description">Numerous bottles, bags, and other containers, alongside many other objects<br>
+        whose purpose you can only guess at...</span>
+      <div class="actions">
+        <div class="action-button">
+          <button mat-stroked-button color="primary">Melt Down</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>

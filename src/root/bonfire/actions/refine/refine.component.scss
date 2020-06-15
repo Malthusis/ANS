@@ -7,26 +7,35 @@
     width: 20%;
     float: left;
   }
+
   .column-2{
     width: 80%;
     float: left;
-    background-image: radial-gradient(rgba(183, 65, 14, .3) ,rgba(183, 65, 14, .0));
-    margin: 10px;
+    // background-image: radial-gradient(rgba(183, 65, 14, .3) ,rgba(183, 65, 14, .0));
+    margin: 14px 0;
     border-radius: 5px;
     color: white;
-    div{
-      padding: 20px;
+    padding: 20px;
+    text-align: center;
+
+    .description {
+      margin-bottom: 10px;
     }
   }
+
+  .metal {
+    background-color: rgba(183, 65, 14, .3);
+  }
 }
+
 .active{
   outline: 2px solid #ddd;
   cursor: pointer;
   color: #ffc107;
-
+  background-color: grey;
 }
-.vertical-menu {
 
+.vertical-menu {
   display: block !important;
   width: 100%;
   text-align: center;
@@ -46,4 +55,14 @@ li {
 
 li:after {
   display: none;
+}
+
+.actions {
+  display: flex;
+  flex-flow: row;
+  margin: 25px 5px 5px 5px;
+  justify-content: center;
+  .action-button {
+    margin: 5px 10px;
+  }
 }
