@@ -22,8 +22,9 @@ export class TooltipDirective implements OnInit {
         originX: 'center',
         originY: 'top',
         overlayX: 'center',
-        overlayY: 'bottom',
-        offsetY: -8,
+        overlayY: 'bottom'
+        // ,
+        // offsetY: -8,
       }]);
 
     this.overlayRef = this.overlay.create({ positionStrategy });
@@ -36,7 +37,7 @@ export class TooltipDirective implements OnInit {
     tooltipRef.instance.text = this.text;
   }
 
-  @HostListener('mouseout')
+  @HostListener('mouseleave')
   hide() {
     this.overlayRef.detach();
   }
