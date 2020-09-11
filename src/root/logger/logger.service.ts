@@ -7,7 +7,6 @@ export class LoggerService {
   private logConsole$$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(null);
 
   constructor() {
-    this.logConsole$$.next(['Welcome to ANS!']);
   }
 
   // probably should make this better.
