@@ -127,7 +127,6 @@
         }
       }
     }},
-  "defaultProject": "ANS",
   "cli": {
     "analytics": false
   }

@@ -6,7 +6,9 @@ import { ResourcesComponent } from './resources/resources.component';
 import { RootService } from './root.service';
 import { ResourceService } from './resources/resource.service';
 import { BonfireComponent } from './bonfire/bonfire.component';
-import { MatButtonModule, MatDividerModule, MatTabsModule } from '@angular/material';
+import { MatDividerModule } from '@angular/material/divider'
+import { MatButtonModule } from '@angular/material/button'
+import { MatTabsModule } from '@angular/material/tabs'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BorderComponent } from './border/border.component';
