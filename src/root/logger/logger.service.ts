@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class LoggerService {
 
-  private logConsole$$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(null);
+  private logConsole$$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(["Welcome to ANS!"]);
 
   constructor() {
   }
