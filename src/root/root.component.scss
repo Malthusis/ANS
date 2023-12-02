@@ -1,69 +1,23 @@
-//.background {
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  right: 0;
-//  bottom: 0;
-//  transition: background-color 2.0s linear;
-//}
-//
-//.no-fire {
-//  background: black;
-//}
-//
-//.fire-1 {
-//  background-image: radial-gradient(black , #191919);
-//}
-
 .background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  transition: opacity 2.0s linear;
-}
-
-.fade-out {
-  opacity: 0;
-}
-
-.no-fire {
   background-color: black;
 }
 
-//.no-fire {
-//  background-image: linear-gradient(to right, black, #191919, black);
-//}
 
-.fire-1 {
-  background-image: linear-gradient(to right, black, #191919, black);
-}
-
-//.fire-1 {
-//  background-image: radial-gradient(black , #191919);
-//}
-
-//.fire-2 {
-//  background: #202020;
-//}
-
-.embers {
-  background: #333333;
-}
 
 .game-container {
   display: flex;
   align-items: stretch;
   height: 100%;
+  background-color: #1f1f1f;
 }
 
 resources {
   height: 100%
-}
-
-.resources {
-    
 }
 
 border {
