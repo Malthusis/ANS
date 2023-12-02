@@ -1,4 +1,10 @@
-<ng-container *ngIf="resources$ | async as resourceMap">
+<div class="resources-box" *ngIf="resources$ | async as resourceMap">
+  INVENTORY OS V1.0<br>
+  STABILITY 10/10<br>
+  <span>INVENTORY OS V1.0<br></span>
+  <span>STABILITY 10/10<br></span>
+  <span>ENERGY 40/40<br></span>
+  <span>STATUS OK<br></span>
   <div class="category" *ngFor="let category of resourceMap | keyvalue">
     <span class="heading">{{category.key}}</span>
     <mat-divider></mat-divider>
@@ -7,7 +13,11 @@
         <div class="resource"><span
           class="{{resource.value.cssStyle}}">{{'RESOURCES.' + resource.key | translate}} </span><span>{{resource.value.value}}
           / {{resource.value.max}}</span></div>
+        <!-- <div class="resource {{resource.value.cssStyle}}">
+          {{'RESOURCES.' + resource.key | translate}} {{resource.value.value}}
+          / {{resource.value.max}}</div> -->
       </ng-container>
     </ng-container>
   </div>
-</ng-container>
+</div>
+
